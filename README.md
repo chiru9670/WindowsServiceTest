@@ -1,0 +1,13 @@
+- Open FileTaggingService/FileTaggingService.csproj in Visual Studio 2022 and build it, without running.
+	- This will build an executable at .\FileTaggingService\bin\Debug\FileTaggingService.exe
+- Now we need to install the FileTagging service. Open a cmd prompt as admin.
+- Go to C:\windows\Microsoft.NET\Framework\v4.0.30319\ directory and run InstallUtil.exe <full path of the built executable>
+	- This will install the service on your local machine
+- Now we need to start the installed service. Go to Run(Win+R) and type `services.msc`.
+- In the list of services, see if `FileTagging.Model` is present(it should be, if the service installed successfully).
+- Right click on `FileTagging.Model` service and click on "Start".
+
+- Now we need to call the API exposed by the service. This is done in TestServiceApp, which is a C# console app.
+- Open TestServiceApp/TestServiceApp.csproj in Visual Studio
+- Build it and run it. Type any string and press Enter.
+- If the FileTagging.Model service is up and running, and everything works fine, then it should print `http: <the input string reversed>`
